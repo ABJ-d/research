@@ -38,8 +38,8 @@ const sketch = (p) => {
     // Acceso correcto a las constantes de p5.Tree
     console.log("Usando p5.tree versión:", p5.Tree.VERSION)
 
-    teapot = await p.loadModel('/teapot.obj', true)
-    bunny = await p.loadModel('/bunny.obj', true)
+    teapot = await p.loadModel('teapot.obj', true)
+    bunny = await p.loadModel('bunny.obj', true)
 
     p.shader(texShader)
     texShader.setUniform('u_resolution', p.resolution())

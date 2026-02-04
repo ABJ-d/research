@@ -13,7 +13,7 @@ const sketch = (p) => {
 
   // Mantenemos tu setup tal cual lo tenías, que es el estándar de la v2
   p.setup = async function () {
-    font = await p.loadFont('/fonts/noto_sans.ttf')
+    font = await p.loadFont('fonts/noto_sans.ttf')
     const canvas = p.createCanvas(600, 400, p.WEBGL)
     canvas.parent(sketchContainer.value) // Solo añadimos esto para que no flote en el body
     
