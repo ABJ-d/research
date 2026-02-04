@@ -49,7 +49,7 @@ const sketch = (p) => {
     pieces.style('left', '10px')
     pieces.style('top', `${8 * Quadrille.cellLength + 15}px`)
 
-    board = p.createQuadrille(8, 8)
+    board = p.createQuadrille()
     reset()
   }
 
