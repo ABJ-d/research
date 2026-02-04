@@ -3,7 +3,7 @@
 theme: seriph
 # new background image
 # background: https://raw.githubusercontent.com/visualcomputing/p5.treegl/main/p5.treegl.png
-background: "/fig/p5.quadrille.js.png"
+background: "/fig/p5.tree.png"
 # apply any unocss classes to the current slide
 class: 'text-center'
 # https://sli.dev/custom/highlighters.html
