@@ -65,6 +65,15 @@ Use FBOs & p5.tree to project worlds within cube
 <ShaderCube />
 
 ---
+layout: center
+---
+
+# p5.quadrille: Chess Pattern Search
+Detección de motivos tácticos usando transformaciones lógicas.
+
+<QuadrilleChess />
+
+---
 level: 2
 ---
 
