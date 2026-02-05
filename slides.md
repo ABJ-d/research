@@ -60,7 +60,7 @@ layout: center
 ---
 
 # Portal Rendering (Non-Euclidean)
-Use FBOs & p5.tree to project worlds within cube
+Use FBOs to project worlds within cube
 
 <ShaderCube />
 
