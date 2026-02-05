@@ -3,8 +3,6 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import p5 from 'p5'
 // 1. Import the class directly for static access (Quadrille.cellLength, Quadrille.or, etc.)
 import Quadrille from 'p5.quadrille'
-// 2. Import p5.platonic for side-effects (adds p.platonicGeometry)
-import 'p5.platonic'
 
 const sketchContainer = ref(null)
 let p5Instance = null
@@ -12,18 +10,15 @@ let p5Instance = null
 const sketch = (p) => {
   // --- Configuration ---
   // Configure static property directly on the class
-  Quadrille.cellLength = 40
+  Quadrille.cellLength = 20
   
   const ROWS = 20
   const COLS = 20
   
   let game, pattern
   let buffer
-  let mode = 4 // Default shape (Box)
-  let lifeColor
-  
-  // We will store the generated platonic geometry here
-  let platonicModel 
+  let mode = 1
+  let life
 
   // Shape selector for the main 3D object
   const shapes = {
@@ -38,27 +33,17 @@ const sketch = (p) => {
 
   p.setup = function () {
     // Canvas size matches the quadrille resolution
-    const canvas = p.createCanvas(ROWS * Quadrille.cellLength, COLS * Quadrille.cellLength, p.WEBGL)
+    const canvas = p.createCanvas(COLS * Quadrille.cellLength, ROWS * Quadrille.cellLength, p.WEBGL)
     canvas.parent(sketchContainer.value)
 
-    // --- Geometry Setup ---
-    // Generate the 3D model for the cells ONCE.
-    // args: radius, detail, type
-    platonicModel = p.platonicGeometry(Quadrille.cellLength / 2.5, 1, 'Icosahedron')
-    
-    // --- Quadrille Setup ---
-    lifeColor = p.color('lime')
+    life = p.color('lime')
     
     // Create the main game grid
     game = p.createQuadrille(COLS, ROWS)
     
     // Create a pattern (BigInt represents a glider/spaceship structure)
-    pattern = p.createQuadrille(3, 16252911n) 
-    
-    // Convert the pattern's "1s" into our rendering function
-    pattern.visit(({row, col, value}) => {
-      if(value) pattern.fill(row, col, displayNode)
-    })
+    pattern = p.createQuadrille(3, 16252911n, life)
+  
 
     // Apply the pattern to the game using Static method Quadrille.or
     game = Quadrille.or(game, pattern, 6, 8)
@@ -81,7 +66,7 @@ const sketch = (p) => {
     // drawQuadrille will call 'displayNode' for every filled cell
     p.drawQuadrille(game, { 
       outline: 'cyan',
-      weight: 2,
+      outlineWeight: 1,
       origin: 'corner' 
     })
     buffer.end()
@@ -89,9 +74,6 @@ const sketch = (p) => {
     // 3. Render the Main Scene
     p.background(20)
     p.orbitControl()
-    
-    p.rotateX(p.frameCount * 0.005)
-    p.rotateY(p.frameCount * 0.005)
 
     p.noStroke()
     
@@ -99,11 +81,8 @@ const sketch = (p) => {
     p.texture(buffer)
     
     // Draw the selected shape
-    if (shapes[mode]) {
-      shapes[mode]()
-    } else {
-      shapes[1]()
-    }
+    shapes[mode] ? shapes[mode]() : shapes[1]();
+    //(shapes[mode] ?? shapes[1])()
   }
 
   // --- Game of Life Logic ---
@@ -125,30 +104,12 @@ const sketch = (p) => {
         // Born (Reproduction)
         if (order === 3) {
           // Fill with the rendering function
-          next.fill(row, col, displayNode) 
+          next.fill(row, col, life) 
         }
       }
     })
     
     game = next
-  }
-
-  // --- Rendering Function for Cells ---
-  // This is passed to .fill() and executed by drawQuadrille
-  function displayNode({ row, col }) {
-    p.push()
-    // Local rotation for the individual cell
-    const t = p.millis() * 0.002
-    p.rotateX(t + row)
-    p.rotateY(t + col)
-    
-    p.fill('lime')
-    p.stroke('black')
-    p.strokeWeight(1)
-    
-    // Render the platonic solid
-    p.model(platonicModel)
-    p.pop()
   }
 
   p.keyPressed = function () {

@@ -55,9 +55,12 @@ const sketch = (p) => {
     // Initialize Shader
     texShader = p.createShader(vertSrc, fragSrc)
     p.shader(texShader)
+    // p5.tree dependency
     texShader.setUniform('u_resolution', p.resolution())
     
     console.log("Using p5 version:", p.VERSION)
+    // p5.tree dependency
+    console.log("Using p5.Tree version:", p5.Tree.VERSION)
   }
 
   p.draw = function () {
@@ -110,40 +113,33 @@ const sketch = (p) => {
     p.stroke('purple')
     p.strokeWeight(2)
 
-    // Apply the Bunny FBO texture to the FRONT face
+    // Apply the Bunny FBO texture to the NEAR face
     texShader.setUniform('model', bunnyTex.color)
-    cubeFace('FRONT', edge)
+    // p5.tree dependency
+    cubeFace(p5.Tree.NEAR, edge)
 
     // Apply the Teapot FBO texture to the RIGHT face
     texShader.setUniform('model', teapotTex.color)
-    cubeFace('RIGHT', edge)
+    // p5.tree dependency
+    cubeFace(p5.Tree.RIGHT, edge)
     
     p.pop()
   }
 
-  // --- Custom Geometry Helper ---
-  // Draws specific cube faces without relying on external libraries like p5.tree
-  function cubeFace(faceName, r) {
-    // r = radius (half of the edge length)
+  // p5.tree dependency
+  function cubeFace(face, edgeSize) {
     p.push()
     p.beginShape()
-    
-    // Manual vertex definition for a cube centered at (0,0,0).
-    // The vertex order is crucial for correct texture mapping 
-    // (The shader relies on implicit UV generation based on screen coords).
     const faces = {
-      'FRONT':  [[-r, -r, +r], [+r, -r, +r], [+r, +r, +r], [-r, +r, +r]], // Z+
-      'BACK':   [[-r, -r, -r], [+r, -r, -r], [+r, +r, -r], [-r, +r, -r]], // Z-
-      'LEFT':   [[-r, -r, -r], [-r, -r, +r], [-r, +r, +r], [-r, +r, -r]], // X-
-      'RIGHT':  [[+r, -r, +r], [+r, -r, -r], [+r, +r, -r], [+r, +r, +r]], // X+
-      'BOTTOM': [[-r, +r, +r], [+r, +r, +r], [+r, +r, -r], [-r, +r, -r]], // Y+
-      'TOP':    [[-r, -r, +r], [+r, -r, +r], [+r, -r, -r], [-r, -r, -r]], // Y-
+      [p5.Tree.NEAR]:   [[-edgeSize, -edgeSize, +edgeSize], [+edgeSize, -edgeSize, +edgeSize], [+edgeSize, +edgeSize, +edgeSize], [-edgeSize, +edgeSize, +edgeSize]],
+      [p5.Tree.FAR]:    [[-edgeSize, -edgeSize, -edgeSize], [+edgeSize, -edgeSize, -edgeSize], [+edgeSize, +edgeSize, -edgeSize], [-edgeSize, +edgeSize, -edgeSize]],
+      [p5.Tree.LEFT]:   [[-edgeSize, -edgeSize, -edgeSize], [-edgeSize, -edgeSize, +edgeSize], [-edgeSize, +edgeSize, +edgeSize], [-edgeSize, +edgeSize, -edgeSize]],
+      [p5.Tree.RIGHT]:  [[+edgeSize, -edgeSize, +edgeSize], [+edgeSize, -edgeSize, -edgeSize], [+edgeSize, +edgeSize, -edgeSize], [+edgeSize, +edgeSize, +edgeSize]],
+      [p5.Tree.BOTTOM]: [[-edgeSize, +edgeSize, +edgeSize], [+edgeSize, +edgeSize, +edgeSize], [+edgeSize, +edgeSize, -edgeSize], [-edgeSize, +edgeSize, -edgeSize]],
+      [p5.Tree.TOP]:    [[-edgeSize, -edgeSize, +edgeSize], [+edgeSize, -edgeSize, +edgeSize], [+edgeSize, -edgeSize, -edgeSize], [-edgeSize, -edgeSize, -edgeSize]],
     }
-    
-    if (faces[faceName]) {
-      for (const [vx, vy, vz] of faces[faceName]) {
-        p.vertex(vx, vy, vz)
-      }
+    if (faces[face]) {
+      for (const [vx, vy, vz] of faces[face]) p.vertex(vx, vy, vz)
     }
     p.endShape(p.CLOSE)
     p.pop()

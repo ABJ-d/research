@@ -71,7 +71,7 @@ layout: center
 # Game of life
 Use p5.platonic
 
-<PlatonicLife />
+<GameofLife />
 
 ---
 layout: center
