@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import p5 from 'p5'
+import 'p5.tree'
 
 const sketchContainer = ref(null)
 let p5Instance = null

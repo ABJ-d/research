@@ -68,6 +68,15 @@ Use FBOs to project worlds within cube
 layout: center
 ---
 
+# Game of life
+Use p5.platonic
+
+<PlatonicLife />
+
+---
+layout: center
+---
+
 # p5.quadrille: Chess Pattern Search
 Detección de motivos tácticos usando transformaciones lógicas.
 
