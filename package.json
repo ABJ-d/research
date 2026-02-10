@@ -3,7 +3,7 @@
     "@slidev/cli": "^52.11.5",
     "@slidev/theme-seriph": "^0.25.0",
     "p5": "^2.2.0",
-    "p5.platonic": "^0.5.0",
+    "p5.platonic": "^0.5.1",
     "p5.quadrille": "^3.4.13",
     "p5.tree": "^0.0.3"
   }
