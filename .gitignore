@@ -1,40 +1,18 @@
-# Node.js dependencies
+# Dependencies
 node_modules/
-package-lock.json
 
-# Logs
-logs/
-*.log
+# Package manager noise
+package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Runtime data
-pids/
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
-
-# nyc test coverage
-.nyc_output/
-
-# Optional eslint cache
-.eslintcache
-
-# dotenv environment variables file
+# Environment files
 .env
-.env.test
-.env.production
+.env.*
 
-# TypeScript cache
+# Build / tool caches
+coverage/
+.nyc_output/
+.eslintcache
 *.tsbuildinfo
-
-# Ignore everything in the docs directory
-docs/*
-
-# Except for the .nojekyll file and other files in docs
-!docs/.nojekyll
-!docs/*
