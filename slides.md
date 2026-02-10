@@ -77,8 +77,9 @@ Use p5.platonic
 layout: center
 ---
 
-# p5.quadrille: Chess Pattern Search
-Detección de motivos tácticos usando transformaciones lógicas.
+# Chess Pattern Recognition
+
+Detection of tactical motifs in chess using [p5.quadrille.js](https://objetos.github.io/p5.quadrille.js/)
 
 <QuadrilleChess />
 

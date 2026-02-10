@@ -76,8 +76,28 @@ const sketch = (p) => {
         row: hit.row,
         col: 9 + hit.col,
         outline: 'magenta',
-        outlineWeight: 2,
+        outlineWeight: 4,
+        tileDisplay: frameTile,
       })
+    }
+  }
+  
+  function frameTile({
+    graphics,
+    cellLength,
+    row,
+    col,
+    width,
+    height,
+    outline,
+    outlineWeight,
+  }) {
+    // Only draw once, at the top-left cell of the quadrille
+    if (row === 0 && col === 0) {
+      graphics.noFill()
+      graphics.stroke(outline)
+      graphics.strokeWeight(outlineWeight)
+      graphics.rect(0, 0, width * cellLength, height * cellLength)
     }
   }
 
@@ -142,7 +162,7 @@ onUnmounted(() => {
   <div class="flex flex-col items-center">
     <div ref="sketchContainer" class="relative border-4 border-stone-800 shadow-xl overflow-hidden rounded-lg"></div>
     <p class="mt-12 text-sm opacity-60 italic">
-      Dibuja un patrón a la izquierda para buscarlo en el tablero FEN de la derecha.
+      Set a pattern on the left to search for it on the FEN board on the right
     </p>
   </div>
 </template>
