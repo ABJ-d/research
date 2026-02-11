@@ -15,13 +15,13 @@ info: |
 
   More info at our [blog](https://jpcharalambosh.co)
 transition: slide-left
-title: Research
+title: Problem & Context
 mdc: true
 hideInToc: true
 ---
 
-# Stage 1: Context & Problem Definition
-**ABJ-d: Game-Based Learning Design**
+# ABJ-d
+**Context & Problem Definition**
 
 [Jean Pierre Charalambos](mailto:jpcharalambosh@unal.edu.co)
 
@@ -166,3 +166,37 @@ level: 1
 - [ ] **Gap & Problem Analysis** (use a synthesis method)
 - [ ] **Tentative Problem Definition**
 - [ ] **References**
+
+---
+layout: center
+---
+
+# Chess Pattern Recognition
+
+Detection of tactical motifs in chess using [p5.quadrille.js](https://objetos.github.io/p5.quadrille.js/)
+
+<QuadrilleChess />
+
+---
+level: 1
+---
+
+# p5.tree
+
+<div class="transform scale-90">
+  <TreeSketch />
+</div>
+
+<p class="text-sm opacity-50 mt-4">
+  Press <b>A</b> to save <a href="https://en.wikipedia.org/wiki/Key_frame">keyframes</a> and <b>P</b> to play back the camera path.
+</p>
+
+---
+layout: center
+---
+
+# Portal Rendering (Non-Euclidean)
+
+Use FBOs to project worlds within cube
+
+<ShaderCube />
