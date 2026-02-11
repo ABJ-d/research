@@ -85,7 +85,7 @@ const sketch = (p) => {
   }
 
   p.setup = function () {
-    const canvas = p.createCanvas(600, 400, p.WEBGL)
+    const canvas = p.createCanvas(580, 360, p.WEBGL)
     canvas.parent(sketchContainer.value)
 
     p.frameRate(100)
@@ -213,7 +213,7 @@ const sketch = (p) => {
   }
 
   p.draw = function () {
-    ;(p.mouseX <= p.width - 120 || p.mouseY >= 265) && p.orbitControl()
+    (p.mouseX <= p.width - 120 || p.mouseY >= 265) && p.orbitControl()
 
     // scene1
     p.background('#879319')
@@ -306,8 +306,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <!-- relative: para que los DOM de p5 (position:absolute) queden anclados aquí -->
   <div class="relative inline-block rounded-lg shadow-2xl border border-white/10 overflow-hidden">
     <div ref="sketchContainer"></div>
+    <p class="mt-12 text-sm opacity-60 italic">
+      Interactive view-frustum manipulation and visibility classification
+    </p>
   </div>
 </template>

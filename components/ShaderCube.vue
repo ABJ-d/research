@@ -160,6 +160,6 @@ onUnmounted(() => {
 <template>
   <div class="flex flex-col items-center justify-center space-y-4">
     <div ref="sketchContainer" class="rounded-lg overflow-hidden border border-white/10 shadow-2xl"></div>
-    <p class="text-xs text-gray-400 italic">Non-euclidean rendering</p>
+    <p class="text-xs text-gray-400 italic">Non-euclidean multi-pass rendering with programmable fragment shaders</p>
   </div>
 </template>

@@ -14,7 +14,7 @@ const sketch = (p) => {
   // Mantenemos tu setup tal cual lo tenías, que es el estándar de la v2
   p.setup = async function () {
     font = await p.loadFont('fonts/noto_sans.ttf')
-    const canvas = p.createCanvas(600, 400, p.WEBGL)
+    const canvas = p.createCanvas(580, 320, p.WEBGL)
     canvas.parent(sketchContainer.value) // Solo añadimos esto para que no flote en el body
     
     p.textFont(font)
@@ -26,8 +26,6 @@ const sketch = (p) => {
       `p5.tree ${p5.Tree.VERSION}`,
       '',
       'Mouse: orbitControl',
-      'd: log view world direction',
-      'l: log eye world location',
       'a: add current camera keyframe',
       'p: play path',
       'r: reset path'
@@ -74,14 +72,6 @@ const sketch = (p) => {
   }
 
   p.keyPressed = function () {
-    p.key === 'd' && (
-      console.log('view direction (EYE → WORLD):', p.mapDirection()),
-      statusText = 'logged view direction'
-    )
-    p.key === 'l' && (
-      console.log('eye location (EYE → WORLD):', p.mapLocation()),
-      statusText = 'logged eye location'
-    )
     p.key === 'a' && (
       p.addPath(),
       statusText = 'camera keyframe added'
@@ -107,7 +97,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center h-full">
+  <div class="flex flex-col items-center">
     <div ref="sketchContainer" class="rounded-lg shadow-2xl border border-white/10 overflow-hidden"></div>
+    <p class="mt-12 text-sm opacity-60 italic">
+      Record camera keyframes and interpolate a smooth 3D path
+    </p>
   </div>
 </template>

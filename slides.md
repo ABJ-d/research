@@ -178,35 +178,40 @@ Detection of tactical motifs in chess using [p5.quadrille.js](https://objetos.gi
 <QuadrilleChess />
 
 ---
-level: 1
+level: center
 ---
 
 # Camera interpolation
 
-<div class="transform scale-90">
-  <TreeSketch />
-</div>
+Camera path interpolation using [p5.tree](https://www.npmjs.com/package/p5.tree)
 
-<p class="text-sm opacity-50 mt-4">
-  Press <b>A</b> to save <a href="https://en.wikipedia.org/wiki/Key_frame">keyframes</a> and <b>P</b> to play back the camera path.
-</p>
+<TreeSketch />
 
 ---
-level: 1
+level: center
 ---
 
 # Visibility visualization
 
-<div class="transform scale-90">
-  <VisibilitySketch />
-</div>
+Real-time visibility and frustum culling visualization with [p5.tree](https://www.npmjs.com/package/p5.tree)
+
+<VisibilitySketch />
 
 ---
 layout: center
 ---
 
-# Portal Rendering (Non-Euclidean)
+# Portal Rendering
 
-Use FBOs to project worlds within cube
+Multi-pass portal rendering with fragment shaders using [p5.tree](https://www.npmjs.com/package/p5.tree)
 
 <ShaderCube />
+
+---
+layout: center
+hideInToc: true
+---
+
+# Thank you 🙏
+
+### Questions? 💡
