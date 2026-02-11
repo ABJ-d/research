@@ -181,7 +181,7 @@ Detection of tactical motifs in chess using [p5.quadrille.js](https://objetos.gi
 level: 1
 ---
 
-# p5.tree
+# Camera interpolation
 
 <div class="transform scale-90">
   <TreeSketch />
@@ -190,6 +190,16 @@ level: 1
 <p class="text-sm opacity-50 mt-4">
   Press <b>A</b> to save <a href="https://en.wikipedia.org/wiki/Key_frame">keyframes</a> and <b>P</b> to play back the camera path.
 </p>
+
+---
+level: 1
+---
+
+# Visibility visualization
+
+<div class="transform scale-90">
+  <VisibilitySketch />
+</div>
 
 ---
 layout: center
