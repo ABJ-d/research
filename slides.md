@@ -140,7 +140,7 @@ level: 2
 **If no systematic review exists for your specific domain, build your foundation from recent primary studies published in Q1/Q2 journals.**
 
 ---
-level: 2
+level: 1
 ---
 
 # Define Your Project Core
@@ -155,7 +155,7 @@ level: 2
 **Synthesis Methods:** Use [Concept Maps](https://en.wikipedia.org/wiki/Concept_map) or [Mermaid Mindmaps](https://mermaid.js.org/syntax/mindmap.html) to structure your findings.
 
 ---
-level: 2
+level: 1
 ---
 
 # Deliverable Checklist
@@ -166,19 +166,3 @@ level: 2
 - [ ] **Gap & Problem Analysis** (use a synthesis method)
 - [ ] **Tentative Problem Definition**
 - [ ] **References**
-
----
-layout: center
-class: "text-center"
-hideInToc: true
----
-
-# Build a Rigorous Foundation
-
-**Stage 1 is about depth of understanding.**
-
-Map the territory. Define a problem worth solving through play.
-
-**Questions?**
-
-[Course Repository](https://github.com/visualcomputing/ABJ-d) | [Email](mailto:jpcharalambosh@unal.edu.co)
